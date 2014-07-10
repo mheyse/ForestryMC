@@ -26,7 +26,7 @@ public class ProxyMail {
 	public void setPOBoxInfo(World world, String playername, POBoxInfo info) {
 		for (int i = 0; i < world.playerEntities.size(); i++) {
 			EntityPlayerMP player = (EntityPlayerMP) world.playerEntities.get(i);
-			if (!player.getGameProfile().getId().equals(playername))
+			if (!player.getGameProfile().getId().toString().replace("-", "").equals(playername))
 				continue;
 
 			Proxies.net.sendToPlayer(new PacketPOBoxInfo(PacketIds.POBOX_INFO, info), player);

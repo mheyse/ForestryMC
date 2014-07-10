@@ -114,7 +114,7 @@ public class ItemResearchNote extends ItemForestry {
 				if(encoded == null)
 					return false;
 
-				IBreedingTracker tracker = encoded.getRoot().getBreedingTracker(world, player.getGameProfile().getId());
+				IBreedingTracker tracker = encoded.getRoot().getBreedingTracker(world, player.getGameProfile().getId().toString().replace("-", ""));
 				if(tracker.isDiscovered(encoded)) {
 					player.addChatMessage(new ChatComponentTranslation("chat.cannotmemorizeagain"));
 					return false;

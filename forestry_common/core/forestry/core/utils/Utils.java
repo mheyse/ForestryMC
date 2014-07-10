@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
+import java.util.UUID;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -34,10 +35,9 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-
 import cpw.mods.fml.common.registry.EntityRegistry;
-
 import buildcraft.api.tools.IToolWrench;
+
 import com.mojang.authlib.GameProfile;
 
 import forestry.api.arboriculture.EnumGermlingType;
@@ -59,7 +59,7 @@ public class Utils {
 
 	public static EntityPlayer getForestryPlayer(World world, int x, int y, int z) {
 		if (modPlayer == null) {
-			modPlayer = new EntityPlayer(world, new GameProfile(Config.fakeUserLogin, Config.fakeUserLogin)) {
+			modPlayer = new EntityPlayer(world, new GameProfile(UUID.nameUUIDFromBytes(Config.fakeUserLogin.getBytes()), Config.fakeUserLogin)) {
 				@Override
 				public boolean canCommandSenderUseCommand(int var1, String var2) {
 					return false;
@@ -77,10 +77,10 @@ public class Utils {
 			modPlayer.posX = x;
 			modPlayer.posY = y;
 			modPlayer.posZ = z;
-			Proxies.log.info("Created player '%s' for Forestry.", modPlayer.getGameProfile().getId());
+			Proxies.log.info("Created player '%s' for Forestry.", modPlayer.getGameProfile().getId().toString().replace("-", ""));
 			if (Config.fakeUserAutoop) {
-				MinecraftServer.getServer().getConfigurationManager().addOp(modPlayer.getGameProfile().getId());
-				Proxies.log.info("Opped player '%s'.", modPlayer.getGameProfile().getId());
+				MinecraftServer.getServer().getConfigurationManager().func_152605_a(modPlayer.getGameProfile());
+				Proxies.log.info("Opped player '%s'.", modPlayer.getGameProfile().getId().toString().replace("-", ""));
 			}
 		}
 

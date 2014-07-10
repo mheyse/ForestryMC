@@ -42,7 +42,7 @@ public abstract class CommandMC extends CommandBase {
 	}
 
 	protected EntityPlayer getPlayerFromName(String name) {
-		EntityPlayerMP player = MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername(name);
+		EntityPlayerMP player = MinecraftServer.getServer().getConfigurationManager().func_152612_a(name);
 
 		if (player == null)
 			throw new PlayerNotFoundException();
@@ -56,5 +56,9 @@ public abstract class CommandMC extends CommandBase {
 
 	protected void sendChatMessage(ICommandSender sender, String message) {
 		sender.addChatMessage(new ChatComponentText(message));
+	}
+	
+	protected void notifyAdmins(ICommandSender sender, String fmt, Object ... args) {
+		func_152373_a(sender, this, fmt, args);
 	}
 }

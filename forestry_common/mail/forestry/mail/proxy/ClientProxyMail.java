@@ -35,15 +35,15 @@ public class ClientProxyMail extends ProxyMail {
 		if (!Proxies.common.isSimulating(Proxies.common.getRenderWorld()))
 			Proxies.net.sendToServer(new ForestryPacket(PacketIds.POBOX_INFO_REQUEST));
 		else {
-			POBox pobox = PostRegistry.getPOBox(Proxies.common.getRenderWorld(), Proxies.common.getClientInstance().thePlayer.getGameProfile().getId());
+			POBox pobox = PostRegistry.getPOBox(Proxies.common.getRenderWorld(), Proxies.common.getClientInstance().thePlayer.getGameProfile().getId().toString().replace("-", ""));
 			if (pobox != null)
-				setPOBoxInfo(Proxies.common.getRenderWorld(), Proxies.common.getClientInstance().thePlayer.getGameProfile().getId(), pobox.getPOBoxInfo());
+				setPOBoxInfo(Proxies.common.getRenderWorld(), Proxies.common.getClientInstance().thePlayer.getGameProfile().getId().toString().replace("-", ""), pobox.getPOBoxInfo());
 		}
 	}
 
 	@Override
 	public void setPOBoxInfo(World world, String playername, POBoxInfo info) {
-		if (Proxies.common.getClientInstance().thePlayer == null || !Proxies.common.getClientInstance().thePlayer.getGameProfile().getId().equals(playername))
+		if (Proxies.common.getClientInstance().thePlayer == null || !Proxies.common.getClientInstance().thePlayer.getGameProfile().getId().toString().replace("-", "").equals(playername))
 			return;
 
 		GuiMailboxInfo.instance.setPOBoxInfo(info);

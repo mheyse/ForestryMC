@@ -90,7 +90,7 @@ public class ContainerLetter extends ContainerItemInventory {
 		if (Proxies.common.isSimulating(entityplayer.worldObj)) {
 			ILetter letter = letterInventory.getLetter();
 			if (!letter.isProcessed())
-				letter.setSender(new MailAddress(entityplayer.getGameProfile().getId()));
+				letter.setSender(new MailAddress(entityplayer.getGameProfile().getId().toString().replace("-", "")));
 		}
 
 		super.onContainerClosed(entityplayer);

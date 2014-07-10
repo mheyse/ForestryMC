@@ -137,7 +137,7 @@ public abstract class TileTreeContainer extends TileEntity implements INetworked
 
 	@Override
 	public void setOwner(EntityPlayer player) {
-		this.owner = player.getGameProfile().getId();
+		this.owner = player.getGameProfile().getId().toString().replace("-", "");
 	}
 
 	public void setOwner(String playername) {
@@ -147,7 +147,7 @@ public abstract class TileTreeContainer extends TileEntity implements INetworked
 	@Override
 	public boolean isOwner(EntityPlayer player) {
 		if (owner != null)
-			return owner.equals(player.getGameProfile().getId());
+			return owner.equals(player.getGameProfile().getId().toString().replace("-", ""));
 		else
 			return false;
 	}

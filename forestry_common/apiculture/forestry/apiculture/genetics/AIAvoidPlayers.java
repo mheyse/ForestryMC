@@ -50,7 +50,7 @@ public class AIAvoidPlayers extends EntityAIBase {
 			return false;
 
 		Vec3 randomTarget = RandomPositionGenerator.findRandomTargetBlockAwayFrom(mob, 16, 7,
-				mob.worldObj.getWorldVec3Pool().getVecFromPool(player.posX, player.posY, player.posZ));
+				Vec3.createVectorHelper(player.posX, player.posY, player.posZ));
 
 		if (randomTarget == null)
 			return false;

@@ -47,7 +47,7 @@ public class GuiBeealyzer extends GuiAlyzer {
 		for (ItemStack beeStack : beeList)
 			iconStacks.put(PluginApiculture.beeInterface.getMember(beeStack).getIdent(), beeStack);
 
-		breedingTracker = PluginApiculture.beeInterface.getBreedingTracker(player.worldObj, player.getGameProfile().getId());
+		breedingTracker = PluginApiculture.beeInterface.getBreedingTracker(player.worldObj, player.getGameProfile().getId().toString().replace("-", ""));
 	}
 
 	@Override

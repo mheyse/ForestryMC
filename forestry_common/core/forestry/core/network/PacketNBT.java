@@ -12,6 +12,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import net.minecraft.nbt.CompressedStreamTools;
+import net.minecraft.nbt.NBTSizeTracker;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class PacketNBT extends ForestryPacket {
@@ -42,7 +43,7 @@ public class PacketNBT extends ForestryPacket {
 		short length = data.readShort();
 		byte[] compressed = new byte[length];
 		data.readFully(compressed);
-		this.nbttagcompound = CompressedStreamTools.decompress(compressed);
+		this.nbttagcompound = CompressedStreamTools.func_152457_a(compressed, NBTSizeTracker.field_152451_a);
 	}
 
 	public NBTTagCompound getTagCompound() {

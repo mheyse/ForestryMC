@@ -25,7 +25,7 @@ public abstract class AIButterflyBase extends EntityAIBase {
 			return getRandomDestinationUpwards();
 		
 		Vec3 randomTarget = RandomPositionGenerator.findRandomTargetBlockAwayFrom(entity, 16, 7,
-				entity.worldObj.getWorldVec3Pool().getVecFromPool(entity.posX, entity.posY, entity.posZ));
+				Vec3.createVectorHelper(entity.posX, entity.posY, entity.posZ));
 
 		if (randomTarget == null)
 			return null;
